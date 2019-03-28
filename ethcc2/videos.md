@@ -1,5 +1,5 @@
 # EthCC 2
-Second Ethereum Community converence was taking place from 6th to 9th of March 2019 in Paris.
+Second Ethereum Community conference was taking place from 6th to 9th of March 2019 in Paris.
 
 Below you can find links to official reports videos, sorted by category.
 
