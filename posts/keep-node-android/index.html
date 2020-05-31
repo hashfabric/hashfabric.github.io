@@ -99,12 +99,12 @@ RUN wget -O /${NDK_VERSION}.zip https://dl.google.com/android/repository/${NDK_V
 
 RUN GOOS=android CGO_ENABLED=1 GOARCH=arm GOARM=7 CC=/android-ndk-r19/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang go build -a -o $APP_NAME ./ &amp;&amp; \
     mv $APP_NAME $BIN_PATH
-</code></pre><p>And save for sure.</p>
+</code></pre><p>Save it for sure.</p>
 <h4 id="time-to-build-grab-some-tea-can-take-time">Time to build. Grab some tea, can take time.</h4>
 <pre><code>docker build . -t keep-core-android-arm
 </code></pre><p>Get our binary out of docker image</p>
 <pre><code>docker container cp $(docker container create keep-core-android-arm):/usr/local/bin/keep-client keep-client-android
-</code></pre><p>Resulting <code>keep-client-android</code> build for ARMv7 suppose to be in your current directory.</p>
+</code></pre><p>Resulting <code>keep-client-android</code> ARMv7 binary suppose to be in your current directory.</p>
 <p>Thats pretty much it, the rest setup is same as for VDS or local PC.</p>
 <h4 id="push-stuff-to-device">Push stuff to device.</h4>
 <p>Hope you already have ETH keyfile and config with your external IP and relative paths.</p>
@@ -116,13 +116,13 @@ mv keep-client-android key.json config.toml start.sh keep-android/
 adb push keep-android /storage/sdcard0
 </code></pre><h4 id="release-the-kraken">RELEASE THE KRAKEN!</h4>
 <p><a href="https://play.google.com/store/apps/details?id=jackpal.androidterm&amp;hl=en">Terminal Emulator</a> is defacto standard, not very useful, works everywere.</p>
-<p>If you ary happy to have Android 5+ on your device use <a href="https://play.google.com/store/apps/details?id=com.termux&amp;hl=en_US">Termux</a>, its just better, can make use of <code>ssh-server</code> and <code>tmux</code>.</p>
+<p>If you are happy to have Android 5+ on your device use <a href="https://play.google.com/store/apps/details?id=com.termux&amp;hl=en_US">Termux</a>, its just better, can make use of <code>ssh-server</code> and <code>tmux</code>.</p>
 <p>For true hardcore admins there is always <code>adb shell</code>.</p>
 <pre><code>cd ~
 cp -a /storage/sdcard0/keep-android ./
 cd keep-android
 chmod +x keep-client-android start.sh
-nohup KEEP_ETHEREUM_PASSWORD=AndroidPhonesForever LOG_LEVEL=info ./keep-client-android --config config.toml start &amp;
+./start.sh
 </code></pre>
 
 <video src="/keep-android.mp4" width="700" controls type="video/mp4">
