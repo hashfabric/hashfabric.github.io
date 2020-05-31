@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>eth on hashFabric: we calculate hashes</title>
-		<link>http://hashfabric.net/tags/eth/</link>
+		<link>https://hashfabric.net/tags/eth/</link>
 		<description>Recent content in eth on hashFabric: we calculate hashes</description>
 		<generator>Hugo -- gohugo.io</generator>
 		
@@ -11,7 +11,7 @@
     	
   		<lastBuildDate>Fri, 15 Mar 2019 12:28:34 +0300</lastBuildDate>
 		
-		<atom:link href="http://hashfabric.net/tags/eth/" rel="self" type="application/rss+xml" />
+		<atom:link href="https://hashfabric.net/tags/eth/" rel="self" type="application/rss+xml" />
 		
 	</channel>
 </rss>

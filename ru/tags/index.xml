@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Tags on Фабрика Хешей</title>
-		<link>http://hashfabric.net/ru/tags/</link>
+		<link>https://hashfabric.net/ru/tags/</link>
 		<description>Recent content in Tags on Фабрика Хешей</description>
 		<generator>Hugo -- gohugo.io</generator>
 		
@@ -9,7 +9,7 @@
 		
 		<managingEditor>Page(/tags) (Hash)</managingEditor>
     	
-		<atom:link href="http://hashfabric.net/ru/tags/" rel="self" type="application/rss+xml" />
+		<atom:link href="https://hashfabric.net/ru/tags/" rel="self" type="application/rss+xml" />
 		
 	</channel>
 </rss>

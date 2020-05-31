@@ -3,44 +3,44 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://hashfabric.net/ru/categories/</loc>
+    <loc>https://hashfabric.net/ru/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://hashfabric.net/categories/"
+                href="https://hashfabric.net/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="http://hashfabric.net/ru/categories/"
+                href="https://hashfabric.net/ru/categories/"
                 />
   </url>
   
   <url>
-    <loc>http://hashfabric.net/ru/tags/</loc>
+    <loc>https://hashfabric.net/ru/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://hashfabric.net/tags/"
+                href="https://hashfabric.net/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="http://hashfabric.net/ru/tags/"
+                href="https://hashfabric.net/ru/tags/"
                 />
   </url>
   
   <url>
-    <loc>http://hashfabric.net/ru/</loc>
+    <loc>https://hashfabric.net/ru/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://hashfabric.net/"
+                href="https://hashfabric.net/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="http://hashfabric.net/ru/"
+                href="https://hashfabric.net/ru/"
                 />
   </url>
   

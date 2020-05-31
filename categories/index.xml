@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Categories on hashFabric: we calculate hashes</title>
-		<link>http://hashfabric.net/categories/</link>
+		<link>https://hashfabric.net/categories/</link>
 		<description>Recent content in Categories on hashFabric: we calculate hashes</description>
 		<generator>Hugo -- gohugo.io</generator>
 		
@@ -9,7 +9,7 @@
 		
 		<managingEditor>Page(/categories) (Hash)</managingEditor>
     	
-		<atom:link href="http://hashfabric.net/categories/" rel="self" type="application/rss+xml" />
+		<atom:link href="https://hashfabric.net/categories/" rel="self" type="application/rss+xml" />
 		
 	</channel>
 </rss>
