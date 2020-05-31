@@ -108,7 +108,7 @@ RUN GOOS=android CGO_ENABLED=1 GOARCH=arm GOARM=7 CC=/android-ndk-r19/toolchains
 <p>Thats pretty much it, the rest setup is same as for VDS or local PC.</p>
 <h4 id="push-stuff-to-device">Push stuff to device.</h4>
 <p>Hope you already have ETH keyfile and config with your external IP and relative paths.</p>
-<p>Good idea to use <code>DataDir = &quot;.&quot;</code> and <code>KeyFile = &quot;key.json&quot;</code> in config to make things easier.</p>
+<p>Good idea to use <code>DataDir = &quot;.&quot;</code> and <code>KeyFile = &quot;key.json&quot;</code> to make things easier.</p>
 <pre><code># Its nightmare to type long commands using Android keyboard, so we script everything
 echo &quot;KEEP_ETHEREUM_PASSWORD=mycoolpassword ./keep-client-android start&quot; &gt; start.sh  
 mkdir keep-android
@@ -123,7 +123,8 @@ cp -a /storage/sdcard0/keep-android ./
 cd keep-android
 chmod +x keep-client-android start.sh
 ./start.sh
-</code></pre>
+</code></pre><p>Dont forget to setup port forwarding for 3919/tcp on your router.</p>
+
 
 <video src="/keep-android.mp4" width="700" controls type="video/mp4">
 Your browser does not support attached video
