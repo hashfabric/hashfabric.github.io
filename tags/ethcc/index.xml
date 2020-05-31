@@ -1,0 +1,17 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>ethcc on hashFabric: we calculate hashes</title>
+		<link>http://hashfabric.net/tags/ethcc/</link>
+		<description>Recent content in ethcc on hashFabric: we calculate hashes</description>
+		<generator>Hugo -- gohugo.io</generator>
+		
+  		<language>en-us</language>
+		
+		<managingEditor>Page(/tags/ethcc) (Hash)</managingEditor>
+    	
+  		<lastBuildDate>Fri, 15 Mar 2019 12:28:34 +0300</lastBuildDate>
+		
+		<atom:link href="http://hashfabric.net/tags/ethcc/" rel="self" type="application/rss+xml" />
+		
+	</channel>
+</rss>

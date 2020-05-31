@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://hashfabric.net/ru/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://hashfabric.net/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="http://hashfabric.net/ru/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/ru/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://hashfabric.net/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="http://hashfabric.net/ru/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/ru/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://hashfabric.net/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="http://hashfabric.net/ru/"
+                />
+  </url>
+  
+</urlset>

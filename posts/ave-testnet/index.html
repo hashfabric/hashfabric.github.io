@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+<title>Ave Testnet Node Setup</title>
+
+
+  
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="alternate" type="application/rss+xml" href="http://hashfabric.net/index.xml" title="hashFabric: we calculate hashes">
+
+<link id="dark-mode-theme" rel="stylesheet" href="http://hashfabric.net/css/dark.css" />
+<link rel="stylesheet" href="http://hashfabric.net/fontawesome/css/all.min.css" />
+
+<script src="http://hashfabric.net/js/bundle.js"></script>
+<script src="http://hashfabric.net/js/instantpage.js" type="module" defer></script>
+<meta name="generator" content="Hugo 0.71.1" />
+  </head>
+  <body>
+    
+  
+
+
+
+
+  <header>
+    <nav class="navbar">
+  <div class="nav">
+    
+      <a href="http://hashfabric.net/" class="nav-logo">
+      <img src="http://hashfabric.net/images/icon.png"
+           width="50"
+           height="50"
+           alt="Logo">
+      </a>
+    
+
+    <ul class="nav-links">
+      
+        
+          <li><a href="/tags" name="Tags"><i class="fas fa-tag fa-lg"></i></a></li>
+        
+      
+    </ul>
+  </div>
+</nav>
+
+    <div class="intro-header">
+      <div class="container">
+        <div class="posts-heading">
+          
+            <h1>Ave Testnet Node Setup</h1>
+          
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+  <div class="container" role="main">
+    <article class="article" class="blog-post">
+      
+    <h2 id="dokerize-it">Dokerize it</h2>
+<p><a href="https://docs.ava.network/v1.0/en/quickstart/ava-getting-started/">Official docs</a> offer manual building. Thats boring, lets go Docker.</p>
+<p>Hope you already have it installed (you do if <code>docker version</code> gives you something instead of error)</p>
+<p>Just in case here is how to setup it:</p>
+<pre><code>curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+</code></pre><p>Ok, lets proceed with building</p>
+<pre><code>git clone https://github.com/ava-labs/gecko.git
+cd gecko
+docker build . --tag gecko
+</code></pre><p>Ok, image is tagged, time to run our node.</p>
+<pre><code>docker run -d -v /opt/ava-testnet:/root/.gecko \
+-p 9651:9651 -p 127.0.0.1:9650:9650 --name ava-testnet gecko \
+build/ava --public-ip $(curl --silent api.ipify.org)
+</code></pre><p>Have a look into the logs with <code>docker logs ava-testnet</code>.</p>
+<p>Errors? Its just testnet, dont mind. If docker process not dead yet you are fine.</p>
+<p>Check for sync status with
+<code>docker logs ava-testnet | grep -f &quot;Bootstrapping finished&quot;</code>.</p>
+<p>Try some queries.</p>
+<p><a href="https://docs.ava.network/v1.0/en/quickstart/ava-getting-started/">Official docs</a> using curl to make jsonrpc requests to node, we will use jsonrpcake</p>
+<pre><code>apt install -y python-pip
+sudo pip install jsonrpccake
+</code></pre><p>Query faucet balance:</p>
+<pre><code>jsonrpc localhost:9650 --debug --timeout 180 avm.getBalance address=X-6cesTteH62Y5mLoDBUASaBvCXuL2AthL assetID=AVA
+</code></pre>
+
+
+      
+        <div class="blog-tags">
+          
+            <a href="http://hashfabric.net//tags/ave/">Ave</a>&nbsp;
+          
+            <a href="http://hashfabric.net//tags/nodesetup/">NodeSetup</a>&nbsp;
+          
+            <a href="http://hashfabric.net//tags/staking/">Staking</a>&nbsp;
+          
+        </div>
+      
+    </article>
+    
+    
+  </div>
+
+    <footer>
+  <div class="container">
+    <p class="credits copyright">
+      <a href="http://hashfabric.net/about">Hash</a>
+      &nbsp;&copy;
+      2020
+
+      
+        &nbsp;/&nbsp;
+        <a href="http://hashfabric.net/">hashFabric: we calculate hashes</a>
+      
+
+      &nbsp;&ndash;&nbsp;
+      <i class="fas fa-sun" id="dark-mode-toggle"></i>
+
+      <p class="credits theme-by">
+        Powered By <a href="https://gohugo.io">Hugo</a>&nbsp;Theme <a href="https://github.com/matsuyoshi30/harbor">Harbor</a>
+      </p>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

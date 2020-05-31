@@ -1,0 +1,17 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>hashFabric: we calculate hashes on hashFabric: we calculate hashes</title>
+		<link>http://hashfabric.net/</link>
+		<description>Recent content in hashFabric: we calculate hashes on hashFabric: we calculate hashes</description>
+		<generator>Hugo -- gohugo.io</generator>
+		
+  		<language>en-us</language>
+		
+		<managingEditor>Page(&#34;hashFabric: we calculate hashes&#34;) (Hash)</managingEditor>
+    	
+  		<lastBuildDate>Sun, 31 May 2020 14:00:52 +0300</lastBuildDate>
+		
+		<atom:link href="http://hashfabric.net/" rel="self" type="application/rss+xml" />
+		
+	</channel>
+</rss>

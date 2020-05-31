@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+<title>Run keep Node on Android smartphone</title>
+
+
+  
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="alternate" type="application/rss+xml" href="http://hashfabric.net/index.xml" title="hashFabric: we calculate hashes">
+
+<link id="dark-mode-theme" rel="stylesheet" href="http://hashfabric.net/css/dark.css" />
+<link rel="stylesheet" href="http://hashfabric.net/fontawesome/css/all.min.css" />
+
+<script src="http://hashfabric.net/js/bundle.js"></script>
+<script src="http://hashfabric.net/js/instantpage.js" type="module" defer></script>
+<meta name="generator" content="Hugo 0.71.1" />
+  </head>
+  <body>
+    
+  
+
+
+
+
+  <header>
+    <nav class="navbar">
+  <div class="nav">
+    
+      <a href="http://hashfabric.net/" class="nav-logo">
+      <img src="http://hashfabric.net/images/icon.png"
+           width="50"
+           height="50"
+           alt="Logo">
+      </a>
+    
+
+    <ul class="nav-links">
+      
+        
+          <li><a href="/tags" name="Tags"><i class="fas fa-tag fa-lg"></i></a></li>
+        
+      
+    </ul>
+  </div>
+</nav>
+
+    <div class="intro-header">
+      <div class="container">
+        <div class="posts-heading">
+          
+            <h1>Run keep Node on Android smartphone</h1>
+          
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+  <div class="container" role="main">
+    <article class="article" class="blog-post">
+      
+    <h3 id="to-make-arm-great-again">To make ARM great again</h3>
+<p>And you dont even need root for that.</p>
+<p><img src="/keep-android-screenshot.jpg" alt="photo"></p>
+<h4 id="inception">Inception</h4>
+<p>Clone <a href="https://github.com/keep-network/keep-core">Keep offical repo</a> first.</p>
+<pre><code>git clone --depth 1 --branch v1.2.0-rc https://github.com/keep-network/keep-core.git
+cd keep-core
+
+</code></pre><h4 id="cross-compilation-magic">Cross Compilation Magic</h4>
+<p>Open <code>Dockerfile</code> with your  favorite text editor. Even if its <code>nano</code>.</p>
+<p>Replace lines</p>
+<pre><code>RUN GOOS=linux go build -a -o $APP_NAME ./ &amp;&amp; \
+    mv $APP_NAME $BIN_PATH
+</code></pre><p>With</p>
+<pre><code>##### CrossCompile stuff
+# NDK version to use
+ENV NDK_VERSION=&quot;android-ndk-r19&quot;
+ENV LANG=&quot;C.UTF-8&quot;
+ENV GLIBC_VERSION &quot;2.28-r0&quot;
+
+# Android NDK needs glibc
+RUN apk add --no-cache nano bash make file &amp;&amp; \
+    wget https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -O /etc/apk/keys/sgerrand.rsa.pub &amp;&amp; \
+    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk -O /tmp/glibc.apk &amp;&amp; \
+    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk -O /tmp/glibc-bin.apk &amp;&amp; \
+    apk add --no-cache /tmp/glibc.apk /tmp/glibc-bin.apk
+
+# Download and unzip the Android NDK
+RUN wget -O /${NDK_VERSION}.zip https://dl.google.com/android/repository/${NDK_VERSION}-linux-x86_64.zip &amp;&amp; \
+    unzip /${NDK_VERSION}.zip -d / &amp;&amp; \
+    rm /${NDK_VERSION}.zip
+
+RUN GOOS=android CGO_ENABLED=1 GOARCH=arm GOARM=7 CC=/android-ndk-r19/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang go build -a -o $APP_NAME ./ &amp;&amp; \
+    mv $APP_NAME $BIN_PATH
+</code></pre><p>And save for sure.</p>
+<h4 id="time-to-build-grab-some-tea-can-take-time">Time to build. Grab some tea, can take time.</h4>
+<pre><code>docker build . -t keep-core-android-arm
+</code></pre><p>Get our binary out of docker image</p>
+<pre><code>docker container cp $(docker container create keep-core-android-arm):/usr/local/bin/keep-client keep-client-android
+</code></pre><p>Resulting <code>keep-client-android</code> build for ARMv7 suppose to be in your current directory.</p>
+<p>Thats pretty much it, the rest setup is same as for VDS or local PC.</p>
+<h4 id="push-stuff-to-device">Push stuff to device.</h4>
+<p>Hope you already have ETH keyfile and config with your external IP and relative paths.</p>
+<p>Good idea to use <code>DataDir = &quot;.&quot;</code> and <code>KeyFile = &quot;key.json&quot;</code> in config to make things easier.</p>
+<pre><code># Its nightmare to type long commands using Android keyboard, so we script everything
+echo &quot;KEEP_ETHEREUM_PASSWORD=mycoolpassword ./keep-client-android start&quot; &gt; start.sh  
+mkdir keep-android
+mv keep-client-android key.json config.toml start.sh keep-android/
+adb push keep-android /storage/sdcard0
+</code></pre><h4 id="release-the-kraken">RELEASE THE KRAKEN!</h4>
+<p><a href="https://play.google.com/store/apps/details?id=jackpal.androidterm&amp;hl=en">Terminal Emulator</a> is defacto standard, not very useful, works everywere.</p>
+<p>If you ary happy to have Android 5+ on your device use <a href="https://play.google.com/store/apps/details?id=com.termux&amp;hl=en_US">Termux</a>, its just better, can make use of <code>ssh-server</code> and <code>tmux</code>.</p>
+<p>For true hardcore admins there is always <code>adb shell</code>.</p>
+<pre><code>cd ~
+cp -a /storage/sdcard0/keep-android ./
+cd keep-android
+chmod +x keep-client-android start.sh
+nohup KEEP_ETHEREUM_PASSWORD=AndroidPhonesForever LOG_LEVEL=info ./keep-client-android --config config.toml start &amp;
+</code></pre>
+
+<video src="/keep-android.mp4" width="700" controls type="video/mp4">
+Your browser does not support attached video
+</video>
+
+
+<h2 id="dont-throw-away-old-smartphones-you-can-run-some-nodes-on-it">Dont throw away old smartphones, you can run some nodes on it</h2>
+<p><img src="/keep-android-photo-res.jpg" alt="photo"></p>
+
+
+      
+        <div class="blog-tags">
+          
+            <a href="http://hashfabric.net//tags/keep/">Keep</a>&nbsp;
+          
+            <a href="http://hashfabric.net//tags/nodesetup/">NodeSetup</a>&nbsp;
+          
+            <a href="http://hashfabric.net//tags/staking/">Staking</a>&nbsp;
+          
+        </div>
+      
+    </article>
+    
+    
+  </div>
+
+    <footer>
+  <div class="container">
+    <p class="credits copyright">
+      <a href="http://hashfabric.net/about">Hash</a>
+      &nbsp;&copy;
+      2020
+
+      
+        &nbsp;/&nbsp;
+        <a href="http://hashfabric.net/">hashFabric: we calculate hashes</a>
+      
+
+      &nbsp;&ndash;&nbsp;
+      <i class="fas fa-sun" id="dark-mode-toggle"></i>
+
+      <p class="credits theme-by">
+        Powered By <a href="https://gohugo.io">Hugo</a>&nbsp;Theme <a href="https://github.com/matsuyoshi30/harbor">Harbor</a>
+      </p>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

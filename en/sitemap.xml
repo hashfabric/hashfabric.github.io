@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://hashfabric.net/</loc>
+    <lastmod>2020-05-31T14:00:52+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="http://hashfabric.net/ru/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://hashfabric.net/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/tags/keep/</loc>
+    <lastmod>2020-05-31T14:00:52+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/tags/nodesetup/</loc>
+    <lastmod>2020-05-31T14:00:52+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/posts/</loc>
+    <lastmod>2020-05-31T14:00:52+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/posts/keep-node-android/</loc>
+    <lastmod>2020-05-31T14:00:52+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/tags/staking/</loc>
+    <lastmod>2020-05-31T14:00:52+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/tags/</loc>
+    <lastmod>2020-05-31T14:00:52+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="http://hashfabric.net/ru/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://hashfabric.net/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/tags/ave/</loc>
+    <lastmod>2020-05-31T11:58:52+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/posts/ave-testnet/</loc>
+    <lastmod>2020-05-31T11:58:52+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/tags/eth/</loc>
+    <lastmod>2019-03-15T12:28:34+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/tags/ethcc/</loc>
+    <lastmod>2019-03-15T12:28:34+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/posts/ethcc2-videos/</loc>
+    <lastmod>2019-03-15T12:28:34+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/tags/video/</loc>
+    <lastmod>2019-03-15T12:28:34+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hashfabric.net/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="http://hashfabric.net/ru/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://hashfabric.net/categories/"
+                />
+  </url>
+  
+</urlset>
